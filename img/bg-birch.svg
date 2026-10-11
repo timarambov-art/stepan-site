@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1200" viewBox="0 0 1920 1200" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#eaf2ee"/>
+      <stop offset="55%" stop-color="#f4ede0"/>
+      <stop offset="100%" stop-color="#f1e4cc"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="78%" cy="22%" r="40%">
+      <stop offset="0%" stop-color="#fff3d6" stop-opacity="0.9"/>
+      <stop offset="40%" stop-color="#fde6b5" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#fde6b5" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="trunk" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f6efe4"/>
+      <stop offset="50%" stop-color="#fff9ec"/>
+      <stop offset="100%" stop-color="#e8dfcf"/>
+    </linearGradient>
+    <linearGradient id="grass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d6dcb5" stop-opacity="0"/>
+      <stop offset="60%" stop-color="#c9d1a5" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#b8c494" stop-opacity="0.75"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1920" height="1200" fill="url(#sky)"/>
+  <circle cx="1500" cy="260" r="520" fill="url(#sun)"/>
+
+  <g opacity="0.78">
+    <!-- далёкие берёзы -->
+    <g fill="url(#trunk)" opacity="0.6">
+      <rect x="120"  y="180" width="16" height="900"/>
+      <rect x="280"  y="220" width="14" height="860"/>
+      <rect x="420"  y="150" width="18" height="930"/>
+      <rect x="570"  y="200" width="12" height="880"/>
+      <rect x="730"  y="170" width="15" height="910"/>
+      <rect x="880"  y="210" width="13" height="870"/>
+      <rect x="1050" y="180" width="17" height="900"/>
+      <rect x="1210" y="220" width="12" height="860"/>
+      <rect x="1370" y="160" width="16" height="920"/>
+      <rect x="1540" y="200" width="14" height="880"/>
+      <rect x="1700" y="190" width="15" height="890"/>
+      <rect x="1830" y="220" width="12" height="860"/>
+    </g>
+    <!-- чёрные пятна на далёких -->
+    <g fill="#2a2420" opacity="0.35">
+      <rect x="120"  y="340" width="16" height="18"/>  <rect x="120"  y="620" width="16" height="14"/>
+      <rect x="280"  y="420" width="14" height="20"/>  <rect x="280"  y="700" width="14" height="16"/>
+      <rect x="420"  y="300" width="18" height="22"/>  <rect x="420"  y="580" width="18" height="18"/>
+      <rect x="570"  y="380" width="12" height="18"/>  <rect x="570"  y="660" width="12" height="14"/>
+      <rect x="730"  y="320" width="15" height="20"/>  <rect x="730"  y="600" width="15" height="18"/>
+      <rect x="880"  y="400" width="13" height="18"/>  <rect x="880"  y="680" width="13" height="14"/>
+      <rect x="1050" y="340" width="17" height="22"/>  <rect x="1050" y="620" width="17" height="18"/>
+      <rect x="1210" y="420" width="12" height="18"/>  <rect x="1210" y="700" width="12" height="14"/>
+      <rect x="1370" y="300" width="16" height="20"/>  <rect x="1370" y="580" width="16" height="16"/>
+      <rect x="1540" y="380" width="14" height="18"/>  <rect x="1540" y="660" width="14" height="14"/>
+      <rect x="1700" y="360" width="15" height="20"/>  <rect x="1700" y="640" width="15" height="16"/>
+      <rect x="1830" y="420" width="12" height="18"/>  <rect x="1830" y="700" width="12" height="14"/>
+    </g>
+  </g>
+
+  <!-- ближние крупные берёзы -->
+  <g>
+    <g fill="url(#trunk)">
+      <rect x="200"  y="60"  width="56" height="1140"/>
+      <rect x="1660" y="40"  width="64" height="1160"/>
+    </g>
+    <g fill="#2a2420" opacity="0.65">
+      <!-- левая берёза -->
+      <rect x="200" y="180" width="56" height="26"/>
+      <rect x="200" y="340" width="56" height="22"/>
+      <rect x="200" y="510" width="56" height="30"/>
+      <rect x="200" y="700" width="56" height="24"/>
+      <rect x="200" y="880" width="56" height="28"/>
+      <rect x="200" y="1050" width="56" height="22"/>
+      <!-- правая берёза -->
+      <rect x="1660" y="150" width="64" height="30"/>
+      <rect x="1660" y="320" width="64" height="24"/>
+      <rect x="1660" y="490" width="64" height="28"/>
+      <rect x="1660" y="680" width="64" height="26"/>
+      <rect x="1660" y="860" width="64" height="30"/>
+      <rect x="1660" y="1040" width="64" height="24"/>
+    </g>
+    <!-- тонкие ветки -->
+    <g stroke="#3a322a" stroke-width="2" fill="none" opacity="0.5" stroke-linecap="round">
+      <path d="M228 160 C 180 120, 110 100, 40 70"/>
+      <path d="M228 160 C 260 130, 320 100, 380 60"/>
+      <path d="M228 420 C 180 390, 120 380, 60 360"/>
+      <path d="M228 420 C 280 400, 340 390, 400 370"/>
+      <path d="M228 720 C 190 700, 140 690, 90 680"/>
+      <path d="M1692 180 C 1740 140, 1810 110, 1880 80"/>
+      <path d="M1692 180 C 1650 140, 1600 110, 1550 90"/>
+      <path d="M1692 440 C 1750 410, 1820 400, 1890 390"/>
+      <path d="M1692 440 C 1640 420, 1590 410, 1540 400"/>
+      <path d="M1692 740 C 1740 720, 1800 710, 1880 700"/>
+    </g>
+  </g>
+
+  <!-- мягкая трава снизу -->
+  <rect x="0" y="900" width="1920" height="300" fill="url(#grass)"/>
+</svg>
