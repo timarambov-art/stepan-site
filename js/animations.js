@@ -16,7 +16,7 @@
   // Групповой stagger: индекс внутри ближайшего общего контейнера-"сетки".
   var groups = new Map();
   nodes.forEach(function (el) {
-    var parent = el.closest('.grid, .hero__body, .hero__call, .btn-row, .cta-block, .steps, .footer__grid') || el.parentNode;
+    var parent = el.closest('.grid, .hero__body, .hero__call, .btn-row, .cta-block, .steps, .footer__grid, .photo-bento, .services-bento, .stats, .gallery, .faq, .badges, .split') || el.parentNode;
     if (!groups.has(parent)) groups.set(parent, []);
     groups.get(parent).push(el);
   });
@@ -37,4 +37,13 @@
   }, { rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
 
   nodes.forEach(function (n) { io.observe(n); });
+
+  // Safety net: if IO never fires (edge-case iframes, etc.), reveal everything after 1.5s.
+  setTimeout(function () {
+    nodes.forEach(function (n) {
+      if (!n.classList.contains('is-visible')) {
+        n.classList.add('is-visible');
+      }
+    });
+  }, 1500);
 })();

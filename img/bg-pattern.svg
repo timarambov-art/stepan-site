@@ -276,72 +276,91 @@
     </symbol>
   </defs>
 
-  <!-- Сетка 7x7, шаг 80px. Крупные иконки с scale 0.75 умещаются в ячейку.
-       Иконки центрированы вокруг (0,0) — не выходят за свою ячейку, пересечений нет. -->
+  <!-- Сетка 7x7, шаг 80px + jitter ±10px по каждой оси.
+       Иконки центрированы вокруг (0,0), не пересекаются.
+       4 граничные иконки продублированы на противоположной стороне тайла (seamless). -->
   <g class="ic">
 
-    <!-- РЯД 1 (y=40) -->
-    <use href="#tower"       x="40"  y="40"  transform="rotate(-14 40 40) scale(0.75)"/>
-    <use href="#saw"         x="120" y="40"  transform="rotate(55 120 40)"/>
-    <use href="#tree"        x="200" y="40"  transform="rotate(20 200 40) scale(0.85)"/>
-    <use href="#carabiner"   x="280" y="40"  transform="rotate(-32 280 40) scale(0.9)"/>
-    <use href="#snowflake"   x="360" y="40"  transform="rotate(15 360 40)"/>
-    <use href="#chainsaw"    x="440" y="40"  transform="rotate(-25 440 40) scale(0.75)"/>
-    <use href="#pinecone"    x="520" y="40"  transform="rotate(40 520 40)"/>
+    <!-- РЯД 1 (y≈40, jitter) -->
+    <use href="#tower"       x="48"  y="35"  transform="rotate(-14 48 35) scale(0.75)"/>
+    <use href="#saw"         x="125" y="48"  transform="rotate(55 125 48)"/>
+    <use href="#tree"        x="192" y="32"  transform="rotate(20 192 32) scale(0.85)"/>
+    <use href="#carabiner"   x="290" y="42"  transform="rotate(-32 290 42) scale(0.9)"/>
+    <use href="#snowflake"   x="352" y="30"  transform="rotate(15 352 30)"/>
+    <use href="#chainsaw"    x="445" y="48"  transform="rotate(-25 445 48) scale(0.75)"/>
+    <use href="#pinecone"    x="528" y="38"  transform="rotate(40 528 38)"/>
 
-    <!-- РЯД 2 (y=120) -->
-    <use href="#house"       x="40"  y="120" transform="rotate(-8 40 120) scale(0.75)"/>
-    <use href="#nut"         x="120" y="120" transform="rotate(30 120 120)"/>
-    <use href="#rope"        x="200" y="120" transform="rotate(25 200 120) scale(0.9)"/>
-    <use href="#cutter"      x="280" y="120" transform="rotate(0 280 120) scale(0.9)"/>
-    <use href="#helmet"      x="360" y="120" transform="rotate(12 360 120) scale(0.85)"/>
-    <use href="#ladder"      x="440" y="120" transform="rotate(28 440 120) scale(0.9)"/>
-    <use href="#maple"       x="520" y="120" transform="rotate(-20 520 120) scale(0.75)"/>
+    <!-- РЯД 2 (y≈120) -->
+    <use href="#house"       x="45"  y="118" transform="rotate(-8 45 118) scale(0.75)"/>
+    <use href="#nut"         x="128" y="128" transform="rotate(30 128 128)"/>
+    <use href="#rope"        x="195" y="112" transform="rotate(25 195 112) scale(0.9)"/>
+    <use href="#cutter"      x="275" y="130" transform="rotate(0 275 130) scale(0.9)"/>
+    <use href="#helmet"      x="365" y="115" transform="rotate(12 365 115) scale(0.85)"/>
+    <use href="#ladder"      x="448" y="125" transform="rotate(28 448 125) scale(0.9)"/>
+    <use href="#maple"       x="515" y="118" transform="rotate(-20 515 118) scale(0.75)"/>
 
-    <!-- РЯД 3 (y=200) -->
-    <use href="#screwdriver" x="40"  y="200" transform="rotate(-45 40 200)"/>
-    <use href="#bolt"        x="120" y="200" transform="rotate(20 120 200)"/>
-    <use href="#grinder"     x="200" y="200" transform="rotate(-30 200 200)"/>
-    <use href="#acorn"       x="280" y="200" transform="rotate(45 280 200)"/>
-    <use href="#star"        x="360" y="200" transform="rotate(10 360 200)"/>
-    <use href="#icicle"      x="440" y="200" transform="rotate(5 440 200)"/>
-    <use href="#branch"      x="520" y="200" transform="rotate(60 520 200)"/>
+    <!-- РЯД 3 (y≈200) -->
+    <use href="#screwdriver" x="50"  y="205" transform="rotate(-45 50 205)"/>
+    <use href="#bolt"        x="115" y="195" transform="rotate(20 115 195)"/>
+    <use href="#grinder"     x="205" y="208" transform="rotate(-30 205 208)"/>
+    <use href="#acorn"       x="288" y="192" transform="rotate(45 288 192)"/>
+    <use href="#star"        x="358" y="210" transform="rotate(10 358 210)"/>
+    <use href="#icicle"      x="442" y="198" transform="rotate(5 442 198)"/>
+    <use href="#branch"      x="520" y="205" transform="rotate(60 520 205)"/>
 
-    <!-- РЯД 4 (y=280) -->
-    <use href="#axe"         x="40"  y="280" transform="rotate(35 40 280) scale(0.85)"/>
-    <use href="#hammer"      x="120" y="280" transform="rotate(-48 120 280) scale(0.9)"/>
-    <use href="#cloud"       x="200" y="280" transform="rotate(8 200 280) scale(0.75)"/>
-    <use href="#tree"        x="280" y="280" transform="rotate(-16 280 280) scale(0.75)"/>
-    <use href="#chainsaw"    x="360" y="280" transform="rotate(42 360 280) scale(0.75)"/>
-    <use href="#bird"        x="440" y="280" transform="rotate(-5 440 280) scale(0.85)"/>
-    <use href="#carabiner"   x="520" y="280" transform="rotate(22 520 280) scale(0.75)"/>
+    <!-- РЯД 4 (y≈280) -->
+    <use href="#axe"         x="42"  y="272" transform="rotate(35 42 272) scale(0.85)"/>
+    <use href="#hammer"      x="125" y="288" transform="rotate(-48 125 288) scale(0.9)"/>
+    <use href="#cloud"       x="198" y="275" transform="rotate(8 198 275) scale(0.75)"/>
+    <use href="#tree"        x="282" y="285" transform="rotate(-16 282 285) scale(0.75)"/>
+    <use href="#chainsaw"    x="362" y="268" transform="rotate(42 362 268) scale(0.75)"/>
+    <use href="#bird"        x="438" y="282" transform="rotate(-5 438 282) scale(0.85)"/>
+    <use href="#carabiner"   x="525" y="278" transform="rotate(22 525 278) scale(0.75)"/>
 
-    <!-- РЯД 5 (y=360) -->
-    <use href="#star"        x="40"  y="360" transform="rotate(-30 40 360)"/>
-    <use href="#pinecone"    x="120" y="360" transform="rotate(-20 120 360) scale(0.9)"/>
-    <use href="#nut"         x="200" y="360" transform="rotate(-20 200 360)"/>
-    <use href="#snowflake"   x="280" y="360" transform="rotate(-25 280 360) scale(0.9)"/>
-    <use href="#rope"        x="360" y="360" transform="rotate(-18 360 360) scale(0.85)"/>
-    <use href="#saw"         x="440" y="360" transform="rotate(40 440 360)"/>
-    <use href="#maple"       x="520" y="360" transform="rotate(50 520 360) scale(0.75)"/>
+    <!-- РЯД 5 (y≈360) -->
+    <use href="#star"        x="48"  y="368" transform="rotate(-30 48 368)"/>
+    <use href="#pinecone"    x="118" y="352" transform="rotate(-20 118 352) scale(0.9)"/>
+    <use href="#nut"         x="202" y="365" transform="rotate(-20 202 365)"/>
+    <use href="#snowflake"   x="285" y="358" transform="rotate(-25 285 358) scale(0.9)"/>
+    <use href="#rope"        x="355" y="370" transform="rotate(-18 355 370) scale(0.85)"/>
+    <use href="#saw"         x="445" y="355" transform="rotate(40 445 355)"/>
+    <use href="#maple"       x="522" y="365" transform="rotate(50 522 365) scale(0.75)"/>
 
-    <!-- РЯД 6 (y=440) -->
-    <use href="#ladder"      x="40"  y="440" transform="rotate(-35 40 440) scale(0.85)"/>
-    <use href="#hook"        x="120" y="440" transform="rotate(25 120 440) scale(0.9)"/>
-    <use href="#branch"      x="200" y="440" transform="rotate(-40 200 440)"/>
-    <use href="#helmet"      x="280" y="440" transform="rotate(-10 280 440) scale(0.85)"/>
-    <use href="#cutter"      x="360" y="440" transform="rotate(15 360 440) scale(0.85)"/>
-    <use href="#star"        x="440" y="440" transform="rotate(20 440 440)"/>
-    <use href="#screwdriver" x="520" y="440" transform="rotate(60 520 440)"/>
+    <!-- РЯД 6 (y≈440) -->
+    <use href="#ladder"      x="38"  y="448" transform="rotate(-35 38 448) scale(0.85)"/>
+    <use href="#hook"        x="122" y="432" transform="rotate(25 122 432) scale(0.9)"/>
+    <use href="#branch"      x="195" y="445" transform="rotate(-40 195 445)"/>
+    <use href="#helmet"      x="278" y="438" transform="rotate(-10 278 438) scale(0.85)"/>
+    <use href="#cutter"      x="365" y="442" transform="rotate(15 365 442) scale(0.85)"/>
+    <use href="#star"        x="440" y="430" transform="rotate(20 440 430)"/>
+    <use href="#screwdriver" x="518" y="448" transform="rotate(60 518 448)"/>
 
-    <!-- РЯД 7 (y=520) -->
-    <use href="#bird"        x="40"  y="520" transform="rotate(28 40 520) scale(0.85)"/>
-    <use href="#cloud"       x="120" y="520" transform="rotate(-22 120 520) scale(0.75)"/>
-    <use href="#tower"       x="200" y="520" transform="rotate(20 200 520) scale(0.75)"/>
-    <use href="#bolt"        x="280" y="520" transform="rotate(-15 280 520)"/>
-    <use href="#acorn"       x="360" y="520" transform="rotate(15 360 520)"/>
-    <use href="#hammer"      x="440" y="520" transform="rotate(45 440 520) scale(0.85)"/>
-    <use href="#tree"        x="520" y="520" transform="rotate(10 520 520) scale(0.75)"/>
+    <!-- РЯД 7 (y≈520) -->
+    <use href="#bird"        x="50"  y="515" transform="rotate(28 50 515) scale(0.85)"/>
+    <use href="#cloud"       x="128" y="528" transform="rotate(-22 128 528) scale(0.75)"/>
+    <use href="#tower"       x="200" y="512" transform="rotate(20 200 512) scale(0.75)"/>
+    <use href="#bolt"        x="290" y="525" transform="rotate(-15 290 525)"/>
+    <use href="#acorn"       x="358" y="518" transform="rotate(15 358 518)"/>
+    <use href="#hammer"      x="448" y="522" transform="rotate(45 448 522) scale(0.85)"/>
+    <use href="#tree"        x="525" y="518" transform="rotate(10 525 518) scale(0.75)"/>
+
+    <!-- =========== ГРАНИЧНЫЕ ИКОНКИ С ДУБЛИКАТАМИ (seamless) =========== -->
+
+    <!-- A. Пересекает ЛЕВУЮ границу (x≈0) — дубликат на правой (x+560) -->
+    <use href="#maple"       x="0"   y="245" transform="rotate(-55 0 245) scale(0.8)"/>
+    <use href="#maple"       x="560" y="245" transform="rotate(-55 560 245) scale(0.8)"/>
+
+    <!-- B. Пересекает ВЕРХНЮЮ границу (y≈0) — дубликат внизу (y+560) -->
+    <use href="#ladder"      x="320" y="0"   transform="rotate(70 320 0) scale(0.8)"/>
+    <use href="#ladder"      x="320" y="560" transform="rotate(70 320 560) scale(0.8)"/>
+
+    <!-- C. Пересекает ПРАВУЮ границу — дубликат слева -->
+    <use href="#chainsaw"    x="560" y="400" transform="rotate(-10 560 400) scale(0.8)"/>
+    <use href="#chainsaw"    x="0"   y="400" transform="rotate(-10 0 400) scale(0.8)"/>
+
+    <!-- D. Пересекает НИЖНЮЮ границу — дубликат сверху -->
+    <use href="#rope"        x="90"  y="560" transform="rotate(35 90 560) scale(0.85)"/>
+    <use href="#rope"        x="90"  y="0"   transform="rotate(35 90 0) scale(0.85)"/>
 
   </g>
 </svg>
