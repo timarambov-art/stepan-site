@@ -5,7 +5,7 @@
 
 :root {
   /* палитра: тёплая, природная */
-  --bg: #f6efe2;              /* основной тёплый фон (на случай если SVG не загрузился) */
+  --bg: #dfe6d1;              /* светло-оливковый фон — чтобы белые карточки читались контрастом */
   --paper: #fbf5e8;           /* молочная бумага подложек */
   --paper-strong: #ffffff;    /* чистая подложка для акцентов */
   --paper-tint: rgba(251, 245, 232, 0.92);  /* полупрозрачная */
@@ -62,19 +62,22 @@ body {
   position: relative;
 }
 
-/* фон: берёзы с солнцем, параллакс через fixed */
+/* фон: однотонный кремовый + тематический SVG-паттерн (вышка, фреза, пила, каска…) */
 body::before {
   content: "";
   position: fixed; inset: 0;
-  background: url("../img/bg-birch.jpg") center center / cover no-repeat;
+  background-color: var(--bg);
+  background-image: url("../img/bg-pattern.svg?v=11");
+  background-position: 0 0;
+  background-size: 560px 560px;
+  background-repeat: repeat;
   z-index: -2;
 }
-/* тёплый overlay — чтобы фото не "забивало" контент */
+/* лёгкая световая виньетка сверху — очень мягкая, чтобы не глушить паттерн */
 body::after {
   content: "";
   position: fixed; inset: 0;
-  background:
-    linear-gradient(180deg, rgba(251, 245, 232, 0.35) 0%, rgba(251, 245, 232, 0.55) 100%);
+  background: radial-gradient(ellipse 90% 60% at 50% 0%, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 70%);
   z-index: -1;
   pointer-events: none;
 }
