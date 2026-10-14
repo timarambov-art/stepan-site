@@ -8,8 +8,8 @@
   --bg: #dfe6d1;              /* светло-оливковый фон — чтобы белые карточки читались контрастом */
   --paper: #fbf5e8;           /* молочная бумага подложек */
   --paper-strong: #ffffff;    /* чистая подложка для акцентов */
-  --paper-tint: rgba(251, 245, 232, 0.92);  /* полупрозрачная */
-  --paper-tint-strong: rgba(255, 255, 255, 0.95);
+  --paper-tint: rgba(251, 245, 232, 0.985);  /* почти непрозрачная — паттерн не просвечивает внутри секций, только в промежутках */
+  --paper-tint-strong: rgba(255, 255, 255, 0.98);
 
   --ink: #2a2420;             /* тёплый графит — основной текст */
   --ink-soft: #5a4e42;        /* приглушённый текст */
@@ -19,7 +19,7 @@
   --forest-ink: #ffffff;      /* текст на зелёном */
   --moss: #6a8559;            /* мягкий зелёный — hover/light */
 
-  --amber: #c47a2e;           /* янтарно-медовый — второй акцент (свежий спил) */
+  --amber: #c47a2e;           /* янтарно-медовый — второй акцент (свежий спиливание) */
   --amber-soft: #e9b476;      /* светлый янтарь — подсветки */
 
   --sky: #c8d6cc;             /* небесно-зелёный — тонкие рамки */
@@ -271,6 +271,53 @@ img { max-width: 100%; display: block; }
 .sec--open .sec__inner,
 .sec--open > .wrap { background: transparent; backdrop-filter: none; border: 0; box-shadow: none; padding: 0; }
 .sec__head { margin-bottom: 28px; max-width: 900px; }
+
+/* ======= Модалка-overlay для страниц ======= */
+.page-modal {
+  position: fixed; inset: 0;
+  background: rgba(16, 14, 12, 0.72);
+  backdrop-filter: blur(8px) saturate(1.1);
+  -webkit-backdrop-filter: blur(8px) saturate(1.1);
+  z-index: 1000;
+  opacity: 0; visibility: hidden;
+  transition: opacity 220ms var(--ease), visibility 220ms var(--ease);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+}
+.page-modal.open { opacity: 1; visibility: visible; }
+.page-modal__close {
+  position: absolute; top: 14px; right: 14px;
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: #fff; border: 0; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink); font-family: inherit;
+  z-index: 2;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  transition: transform 180ms var(--ease);
+}
+.page-modal__close:hover { transform: scale(1.08) rotate(90deg); }
+.page-modal__close svg { width: 18px; height: 18px; }
+.page-modal__frame {
+  width: 100%; flex: 1;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--bg);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+}
+@media (min-width: 900px) {
+  .page-modal { padding: 12px; }
+  .page-modal__close { top: 18px; right: 18px; width: 46px; height: 46px; }
+}
+
+/* Внутри iframe-режима скрываем хедер и футер (контент занимает всё окно модалки) */
+body.in-modal .site-header,
+body.in-modal .site-footer,
+body.in-modal .page-modal { display: none !important; }
+body.in-modal { padding-bottom: 0; }
+body.in-modal main > .sec:first-child,
+body.in-modal main > .hero { padding-top: 24px; }
 .sec__head h2 + p { margin-top: 14px; }
 .grid { display: grid; gap: var(--gutter); }
 

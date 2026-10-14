@@ -20,9 +20,7 @@
       <label for="nav-toggle" class="burger" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg></label>
       <nav class="nav" aria-label="Основная навигация">
         <a href="index.html">Главная</a>
-        <a href="uslugi.html">Услуги</a>
-        <a href="spil-derevyev.html">Спил деревьев</a>
-        <a href="arenda-avtovyshki.html">Автовышка</a>
+        <a href="index.html#services">Услуги</a>
         <a href="portfolio.html">Работы</a>
         <a href="o-kompanii.html">О себе</a>
         <a href="kontakty.html">Контакты</a>
@@ -158,15 +156,14 @@
               <a class="btn btn--ghost" href="tel:+79222257512">+7 922 225-75-12</a><a class="btn btn--ghost" href="tel:+79045427812">+7 904 542-78-12</a>
             </div>
           </div>
-          <form class="form" name="zayavka" method="POST" action="/spasibo.html" data-netlify="true" netlify-honeypot="website" id="form">
-            <input type="hidden" name="form-name" value="zayavka">
-            <input type="hidden" name="source" value="metallokonstrukcii">
+          <form class="form" name="zayavka" method="POST" action="https://formsubmit.co/timarambov@gmail.com" id="form">
+            <input type="hidden" name="source" value="metallokonstrukcii"><input type="hidden" name="_subject" value="Заявка с сайта: metallokonstrukcii"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_template" value="table"><input type="hidden" name="_next" value="https://timarambov-art.github.io/stepan-site/spasibo.html">
             <h3>Запрос КП</h3>
             <div class="field"><label for="mk-org">Организация</label><input id="mk-org" type="text" name="organization" placeholder="Название компании"></div>
             <div class="field"><label for="mk-name">Имя контактного лица</label><input id="mk-name" type="text" name="name" autocomplete="name" placeholder="ФИО"></div>
             <div class="field"><label for="mk-tel">Телефон</label><input id="mk-tel" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+7 ___ ___-__-__"></div>
             <div class="field"><label for="mk-msg">Описание задачи</label><textarea id="mk-msg" name="message" placeholder="Например: контейнерная площадка 3×2 м, двухсекционная, объект в Краснотурьинске"></textarea></div>
-            <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
             <button class="btn btn--block" type="submit">Отправить запрос <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button>
             <p class="form__note">Нажимая «отправить», вы соглашаетесь с&nbsp;обработкой данных.</p>
           </form>
@@ -194,7 +191,7 @@
           <ul>
             <li><a href="index.html">Главная</a></li>
             <li><a href="uslugi.html">Все услуги</a></li>
-            <li><a href="spil-derevyev.html">Спил деревьев</a></li>
+            <li></li>
             <li><a href="arenda-avtovyshki.html">Аренда автовышки</a></li>
             <li><a href="vysotnye-raboty.html">Высотные работы</a></li>
             <li><a href="navesy-verandy.html">Веранды и навесы</a></li>
@@ -217,5 +214,5 @@
     </div>
   </footer><nav class="stickybar" aria-label="Быстрая связь"><a href="tel:+79222257512"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A20 20 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7l.6 3a2 2 0 0 1-.5 1.9L7.9 10a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 1.9-.5l3 .6A2 2 0 0 1 22 16.9z"/></svg>Позвонить</a><a href="https://wa.me/79222257512?text=Здравствуйте%2C%20пришлю%20фото%20для%20оценки" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 21l1.6-4.6A8.5 8.5 0 1 1 8 19.6L3 21z"/></svg>Написать в WhatsApp</a></nav>
   
-<script defer src="js/lightbox.js"></script></body>
+<script defer src="js/modal.js"></script><script defer src="js/lightbox.js"></script></body>
 </html>
