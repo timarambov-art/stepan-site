@@ -471,10 +471,27 @@ body.in-modal main > .hero { padding-top: 24px; }
   .services-bento { grid-template-columns: 1fr 1fr; }
 }
 @media (min-width: 1024px) {
-  .services-bento { grid-template-columns: repeat(3, 1fr); grid-auto-rows: minmax(190px, auto); }
+  .services-bento { grid-template-columns: repeat(3, 1fr); grid-auto-rows: minmax(190px, auto); grid-auto-flow: dense; }
   .services-bento .card--featured { grid-column: span 2; grid-row: span 2; }
   .services-bento .card--featured h3 { font-size: 1.9rem; max-width: 18ch; }
   .services-bento .card--featured p { font-size: 1.05rem; max-width: 50ch; }
+  /* Последняя карточка (Сварка) — горизонтальный full-width финальный аккорд */
+  .services-bento > a.card.card--wide {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: center;
+    gap: 28px;
+    padding: 22px 28px;
+    min-height: 0;
+  }
+  .services-bento > a.card.card--wide h3 { font-size: 1.4rem; margin: 0; flex: 0 0 auto; min-width: 160px; letter-spacing: -0.01em; }
+  .services-bento > a.card.card--wide p { flex: 1; margin: 0; max-width: 60ch; font-size: 1rem; }
+  .services-bento > a.card.card--wide .card__more { margin: 0; flex: 0 0 auto; }
+}
+/* Акцент для wide-карточки на всех размерах */
+.card--wide {
+  border-color: rgba(60, 92, 60, 0.45);
+  background: linear-gradient(135deg, rgba(60, 92, 60, 0.08), rgba(233, 180, 118, 0.06) 70%, transparent);
 }
 
 /* ======= Второй номер (hero) ======= */
@@ -990,10 +1007,15 @@ body.in-modal main > .hero { padding-top: 24px; }
 }
 
 /* ======= Scroll-reveal (data-animate) ======= */
+:root {
+  --spring-soft: cubic-bezier(0.34, 1.3, 0.5, 1);
+  --spring-crisp: cubic-bezier(0.22, 1, 0.36, 1);
+  --spring-snap: cubic-bezier(0.16, 1.1, 0.3, 1);
+}
 [data-animate] {
   opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 520ms var(--ease), transform 520ms var(--ease);
+  transform: translateY(18px);
+  transition: opacity 720ms var(--spring-crisp), transform 720ms var(--spring-crisp);
   will-change: opacity, transform;
 }
 [data-animate].is-visible {
@@ -1003,8 +1025,80 @@ body.in-modal main > .hero { padding-top: 24px; }
 [data-animate="fade"] { transform: none; }
 [data-animate="fade"].is-visible { transform: none; }
 
+/* ======= Emil-style card polish ======= */
+.card { position: relative; overflow: hidden; isolation: isolate; }
+.card::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,0.42) 50%, transparent 65%);
+  transform: translateX(-120%);
+  transition: transform 900ms var(--spring-crisp);
+  pointer-events: none; z-index: 1;
+  mix-blend-mode: overlay; opacity: 0;
+}
+.card > * { position: relative; z-index: 2; }
+@media (hover: hover) and (pointer: fine) {
+  a.card { transition: transform 420ms var(--spring-soft), box-shadow 420ms var(--spring-soft), border-color 220ms var(--ease); }
+  a.card:hover { transform: translateY(-4px) scale(1.012); }
+  a.card:hover::before { transform: translateX(120%); opacity: 1; transition-duration: 1100ms; }
+  a.card:hover h3 { transform: translateY(-1px); }
+  a.card h3 { transition: transform 320ms var(--spring-soft); }
+  a.card:hover .card__more::after { transform: translateX(6px); }
+  .card__more::after { transition: transform 320ms var(--spring-snap); }
+}
+
+/* ======= Button micro-interactions ======= */
+.btn { transition: transform 260ms var(--spring-soft), background 220ms var(--ease), color 220ms var(--ease), box-shadow 260ms var(--spring-soft), border-color 220ms var(--ease); }
+.btn svg { transition: transform 300ms var(--spring-snap); }
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover { transform: translateY(-2px); }
+  .btn:hover svg { transform: translateX(4px); }
+}
+.btn:active { transform: translateY(0) scale(0.97); transition-duration: 90ms; }
+
+/* ======= Hero bullets slide-in stagger ======= */
+.hero__bullets li {
+  opacity: 0; transform: translateX(-10px);
+  transition: opacity 540ms var(--spring-crisp), transform 540ms var(--spring-crisp);
+}
+.hero.is-ready .hero__bullets li { opacity: 1; transform: translateX(0); }
+.hero.is-ready .hero__bullets li:nth-child(1) { transition-delay: 180ms; }
+.hero.is-ready .hero__bullets li:nth-child(2) { transition-delay: 260ms; }
+.hero.is-ready .hero__bullets li:nth-child(3) { transition-delay: 340ms; }
+.hero.is-ready .hero__bullets li:nth-child(4) { transition-delay: 420ms; }
+
+/* ======= Stat count-up pulse ======= */
+.stat strong { display: inline-flex; align-items: baseline; gap: 2px; font-variant-numeric: tabular-nums; }
+.stat.is-counted strong { animation: statPulse 480ms var(--spring-soft); }
+@keyframes statPulse {
+  0% { transform: scale(0.96); }
+  60% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+/* ======= Section head reveal (label slides, h2 scales) ======= */
+.sec__head .label { display: inline-block; transition: transform 620ms var(--spring-soft), opacity 620ms var(--ease); }
+.sec__head[data-animate] .label { transform: translateY(8px); opacity: 0; }
+.sec__head[data-animate].is-visible .label { transform: translateY(0); opacity: 1; transition-delay: 60ms; }
+.sec__head h2 { transition: transform 760ms var(--spring-crisp), opacity 760ms var(--ease); }
+.sec__head[data-animate] h2 { transform: translateY(14px) scale(0.985); opacity: 0; }
+.sec__head[data-animate].is-visible h2 { transform: translateY(0) scale(1); opacity: 1; transition-delay: 140ms; }
+.sec__head .lead { transition: transform 720ms var(--spring-crisp), opacity 720ms var(--ease); }
+.sec__head[data-animate] .lead { transform: translateY(10px); opacity: 0; }
+.sec__head[data-animate].is-visible .lead { transform: translateY(0); opacity: 1; transition-delay: 240ms; }
+
+/* ======= Magnetic cursor for featured card ======= */
+.card--featured { transition: transform 480ms var(--spring-soft), box-shadow 480ms var(--spring-soft); }
+
+/* ======= Gallery figure hover ======= */
+.gallery figure { overflow: hidden; }
+.gallery figure img { transition: transform 720ms var(--spring-crisp); }
+@media (hover: hover) and (pointer: fine) {
+  .gallery figure:hover img { transform: scale(1.045); }
+}
+
 /* ======= Reduced motion ======= */
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   html { scroll-behavior: auto; }
+  .card::before { display: none; }
 }
