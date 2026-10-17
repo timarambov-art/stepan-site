@@ -655,6 +655,37 @@ body.in-modal main > .hero { padding-top: 24px; }
   font-family: var(--font-body); font-size: 0.78rem; color: var(--muted);
   text-align: center; margin: 0; line-height: 1.5;
 }
+.form__consent {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-family: var(--font-body); font-size: 0.82rem; color: var(--ink-soft);
+  line-height: 1.5; cursor: pointer; user-select: none;
+  margin: -4px 0 4px;
+}
+.form__consent input[type="checkbox"] {
+  appearance: none; -webkit-appearance: none;
+  flex: 0 0 auto; width: 18px; height: 18px;
+  margin: 1px 0 0; border-radius: 4px;
+  border: 1.5px solid var(--line);
+  background: #fff; cursor: pointer;
+  transition: border-color 180ms var(--ease), background 180ms var(--ease), box-shadow 180ms var(--ease);
+  position: relative;
+}
+.form__consent input[type="checkbox"]:hover { border-color: var(--forest); }
+.form__consent input[type="checkbox"]:focus-visible {
+  outline: none; border-color: var(--forest);
+  box-shadow: 0 0 0 3px rgba(59, 90, 58, 0.18);
+}
+.form__consent input[type="checkbox"]:checked {
+  background: var(--forest); border-color: var(--forest);
+}
+.form__consent input[type="checkbox"]:checked::after {
+  content: ""; position: absolute;
+  left: 5px; top: 1.5px; width: 5px; height: 10px;
+  border: solid #fff; border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.form__consent a { color: var(--forest); text-decoration: underline; text-underline-offset: 2px; }
+.form__consent a:hover { color: var(--amber); }
 
 /* ======= CTA-блок ======= */
 .cta-block {
