@@ -88,6 +88,7 @@ h1, h2, h3, h4 {
   font-weight: 600;
   text-wrap: balance;
   color: var(--ink);
+  overflow-wrap: break-word;
 }
 h1 { font-size: clamp(1.9rem, 6vw, 3.2rem); letter-spacing: -0.025em; font-weight: 700; }
 h2 { font-size: clamp(1.7rem, 5vw, 2.6rem); font-weight: 600; }
@@ -319,12 +320,12 @@ body.in-modal { padding-bottom: 0; }
 body.in-modal main > .sec:first-child,
 body.in-modal main > .hero { padding-top: 24px; }
 .sec__head h2 + p { margin-top: 14px; }
-.grid { display: grid; gap: var(--gutter); }
+.grid { display: grid; gap: var(--gutter); grid-template-columns: minmax(0, 1fr); }
 
 /* ======= Hero (главная) ======= */
 .hero { padding: 32px 0 56px; }
 .hero__panel {
-  display: grid; gap: 24px;
+  display: grid; gap: 24px; grid-template-columns: minmax(0, 1fr);
   background: var(--paper-tint-strong);
   backdrop-filter: blur(18px) saturate(1.12);
   -webkit-backdrop-filter: blur(18px) saturate(1.12);
@@ -528,7 +529,7 @@ body.in-modal main > .hero { padding-top: 24px; }
   padding: 24px;
   box-shadow: var(--shadow-raised);
 }
-.stump__grid { display: grid; gap: 24px; }
+.stump__grid { display: grid; gap: 24px; grid-template-columns: minmax(0, 1fr); }
 .stump__offer {
   font-family: var(--font-head);
   font-size: clamp(1.25rem, 4vw, 1.8rem); line-height: 1.2;
@@ -581,7 +582,7 @@ body.in-modal main > .hero { padding-top: 24px; }
 .steps { counter-reset: s; display: grid; gap: 0; border-top: 1px solid var(--line); }
 .step {
   counter-increment: s; padding: 22px 0; border-bottom: 1px solid var(--line);
-  display: grid; grid-template-columns: 56px 1fr; gap: 14px; align-items: start;
+  display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 14px; align-items: start;
 }
 .step::before {
   content: counter(s, decimal-leading-zero);
@@ -689,7 +690,7 @@ body.in-modal main > .hero { padding-top: 24px; }
 
 /* ======= CTA-блок ======= */
 .cta-block {
-  display: grid; gap: 24px;
+  display: grid; gap: 24px; grid-template-columns: minmax(0, 1fr);
   background: var(--paper-tint-strong);
   backdrop-filter: blur(14px) saturate(1.08);
   -webkit-backdrop-filter: blur(14px) saturate(1.08);
@@ -700,7 +701,7 @@ body.in-modal main > .hero { padding-top: 24px; }
 }
 
 /* ======= Разделение аудиторий ======= */
-.split { display: grid; gap: 16px; }
+.split { display: grid; gap: 16px; grid-template-columns: minmax(0, 1fr); }
 .split__item {
   background: var(--paper-tint-strong);
   backdrop-filter: blur(12px);
@@ -740,7 +741,7 @@ body.in-modal main > .hero { padding-top: 24px; }
   -webkit-backdrop-filter: blur(16px) saturate(1.1);
   border-top: 1px solid var(--line);
 }
-.footer__grid { display: grid; gap: 32px; }
+.footer__grid { display: grid; gap: 32px; grid-template-columns: minmax(0, 1fr); }
 .site-footer h4 {
   font-family: var(--font-head); font-size: 0.9rem; font-weight: 600; font-style: italic;
   color: var(--forest); margin-bottom: 14px;
@@ -1125,6 +1126,65 @@ body.in-modal main > .hero { padding-top: 24px; }
 .gallery figure img { transition: transform 720ms var(--spring-crisp); }
 @media (hover: hover) and (pointer: fine) {
   .gallery figure:hover img { transform: scale(1.045); }
+}
+
+/* ======= Финальная вычитка: классы, которые использует разметка ======= */
+/* .grid--2 / .grid--3 / .steps--3 — те же колонки, что у .grid--cards-* */
+@media (min-width: 768px) {
+  .grid--2 { grid-template-columns: 1fr 1fr; }
+  .grid--3 { grid-template-columns: repeat(3, 1fr); }
+  .steps--3 { grid-template-columns: repeat(3, 1fr); column-gap: 24px; }
+}
+
+/* Крупный телефон на странице контактов */
+.big-tel {
+  display: block; width: fit-content; padding: 6px 0;
+  font-family: var(--font-head); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1;
+  font-size: clamp(1.9rem, 7vw, 2.8rem);
+  color: var(--ink); text-decoration: none;
+}
+@media (hover: hover) and (pointer: fine) { .big-tel:hover { color: var(--forest); } }
+
+/* История (страница «О себе») */
+.timeline {
+  list-style: none; margin: 0; padding: 0 0 0 24px; max-width: 720px;
+  border-left: 2px solid var(--line-strong);
+  display: grid; gap: 28px;
+}
+.timeline li { position: relative; }
+.timeline li::before {
+  content: ""; position: absolute; left: -31px; top: 5px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--amber-soft); border: 2px solid var(--amber);
+}
+.timeline__year {
+  display: block; margin-bottom: 4px;
+  font-family: var(--font-head); font-style: italic; font-weight: 500;
+  font-size: 1.15rem; line-height: 1.2; color: var(--amber);
+}
+.timeline__year:empty { display: none; }
+.timeline h3 { margin-bottom: 4px; }
+.timeline p { margin: 0; }
+
+/* Таблица реквизитов: на узких экранах строки идут стопкой (длинные номера счетов) */
+@media (max-width: 519px) {
+  .spec--stack, .spec--stack tbody, .spec--stack tr, .spec--stack th, .spec--stack td { display: block; width: 100%; }
+  .spec--stack tr { padding: 12px 16px; border-bottom: 1px solid var(--line); }
+  .spec--stack tr:last-child { border-bottom: 0; }
+  .spec--stack th, .spec--stack td { padding: 0; border: 0; text-align: left; overflow-wrap: anywhere; }
+  .spec--stack th { font-size: 0.82rem; margin-bottom: 2px; }
+}
+
+/* Ссылка внутри карточки-не-ссылки (напр. «Аренда лесов») */
+.card .card__more { text-decoration: none; }
+
+/* Фокус для скрытого чекбокса бургер-меню */
+.nav-toggle:focus-visible + .burger,
+.nav-toggle:focus-visible ~ .burger { outline: 2px solid var(--amber); outline-offset: 3px; }
+
+/* Тач-экраны: ссылки в футере не мельче 44px */
+@media (pointer: coarse) {
+  .site-footer li a { padding: 10px 0; }
 }
 
 /* ======= Reduced motion ======= */

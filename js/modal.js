@@ -14,14 +14,11 @@
     }
   } catch (e) { /* cross-origin */ }
 
-  // Список страниц, открываемых модалкой (всё, кроме index.html)
-  var MODAL_PAGES = [
-    'spil-derevyev.html', 'arenda-avtovyshki.html', 'vysotnye-raboty.html',
-    'svarka-na-vysote.html', 'ochistka-krysh.html', 'snegouderzhateli.html',
-    'navesy-verandy.html', 'metallokonstrukcii.html',
-    'portfolio.html', 'yurlicam.html', 'o-kompanii.html', 'kontakty.html',
-    'uslugi.html'
-  ];
+  // Страницы, которые открываются в overlay. Сайт многостраничный: все ссылки
+  // ведут на реальные страницы (работают «назад», адрес в строке, шаринг),
+  // поэтому список пуст и overlay не создаётся.
+  // Чтобы снова включить overlay для страницы — добавьте её имя, например 'portfolio.html'.
+  var MODAL_PAGES = [];
 
   function isModalPage(href) {
     if (!href) return false;
@@ -37,6 +34,7 @@
   var inIframe = false;
   try { inIframe = window.self !== window.top; } catch (e) { inIframe = true; }
   if (inIframe) return;
+  if (!MODAL_PAGES.length) return;
 
   function init() {
     var modal = document.createElement('div');
@@ -45,7 +43,7 @@
     modal.setAttribute('aria-modal', 'true');
     modal.innerHTML =
       '<button class="page-modal__close" aria-label="Закрыть">' +
-      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6L6 18"/></svg>' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>' +
       '</button>' +
       '<iframe class="page-modal__frame" title="Страница" src="about:blank"></iframe>';
     document.body.appendChild(modal);

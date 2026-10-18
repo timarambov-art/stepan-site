@@ -53,14 +53,14 @@
   lb.setAttribute('aria-modal', 'true');
   lb.innerHTML =
     '<button class="lb-close" aria-label="Закрыть">' +
-    '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6L6 18"/></svg>' +
+    '<svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6L6 18"/></svg>' +
     '</button>' +
     '<button class="lb-prev" aria-label="Предыдущее">' +
-    '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg>' +
+    '<svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg>' +
     '</button>' +
     '<figure class="lb-stage"><div class="lb-media"></div><figcaption class="lb-count"></figcaption></figure>' +
     '<button class="lb-next" aria-label="Следующее">' +
-    '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg>' +
+    '<svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg>' +
     '</button>';
   document.body.appendChild(lb);
 

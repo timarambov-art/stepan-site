@@ -1,0 +1,9 @@
+exclude:
+  - "Дополнительно"
+  - "node_modules"
+  - "site"
+  - "netlify.toml"
+  - "package.json"
+  - "package-lock.json"
+  - "CNAME"
+  - "README.md"
